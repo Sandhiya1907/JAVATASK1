@@ -1,0 +1,24 @@
+package sandproject;
+
+import java.util.Scanner;
+
+public class ques {
+    public static void main(String args[]) {
+    	  int itemid[]= {5001,5002,5003,5004,5005};
+    	  int p[]= {40,30,20,10,100};
+    	  System.out.println("enter the price for item:");
+	  Scanner sc= new Scanner(System.in);
+	  int a=sc.nextInt();
+	  int isfound=0;
+    	  for(int i=0;i<itemid.length;i++) {
+    		  if(a == itemid[i]) {
+    			  isfound=1;
+    			  System.out.println("The price is "+p[i]);
+    			  System.out.println("DISCOUNT : YES");
+    		  }
+    	  }
+    	  if(isfound==0) {
+    		  System.out.println("INVALID ID");
+    	  }
+    }
+}
