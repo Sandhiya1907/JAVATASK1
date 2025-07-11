@@ -1,0 +1,57 @@
+package sandproject;
+
+import java.util.Scanner;
+
+public class ques2 {
+    public static void main(String[] args) {
+        int itemid[] = {5001, 5002, 5003, 5004, 5005};
+        int p[] = {4000, 3000, 2000, 1500, 3000};
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the total number of transactions:");
+        int n = sc.nextInt();
+
+        int totalAmount = 0;
+        int count1 = 0;
+        int count2 = 0;
+
+        for (int i = 0; i < n; i++) {
+            System.out.println("Enter the ID for item:");
+            int item = sc.nextInt();
+
+            System.out.println("Enter the quantity for item:");
+            int quantity = sc.nextInt();
+
+            int isfound = 0;
+            for (int j = 0; j < itemid.length; j++) {
+                if (item == itemid[j]) {
+                    int price = p[j];
+                    double discount = 0;
+
+                    if (item == itemid[3]) {
+                        discount = 0.2;
+                        count1 += quantity;
+                    } else if (item == itemid[4]) {
+                        discount = 0.2;
+                        count2 += quantity;
+                    }
+
+                    double totalItem = quantity * price * (1 - discount);
+                    totalAmount += totalItem;
+
+                    System.out.println("Transaction amount (after discount if any): " + totalItem);
+                    isfound = 1;
+                    break;
+                }
+            }
+
+            if (isfound==0) {
+                System.out.println("Invalid id");
+            }
+        }
+
+        int originalPrice = (count1 * 1500) + (count2 * 3000);
+        System.out.println("Total discount given: " + (originalPrice - totalAmount));
+        System.out.println("Final total amount after discount: " + totalAmount);
+    }
+}
